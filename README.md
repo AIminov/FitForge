@@ -48,7 +48,7 @@ Wednesday: intervals 6×800m, HR 165–175, 2 min recovery
 Saturday: long run 60 min, HR 125–140
 ```
 
-**4.** Run LLM generation:
+**3.** Run LLM generation:
 
 *LM Studio:*
 ```bash
@@ -85,12 +85,12 @@ Or specify upfront:
 python -m garmin_fit.llm.request_cli --plan Plan/my_plan.md --workouts 30 ...
 ```
 
-**5.** Build FIT files:
+**4.** Build FIT files:
 ```bash
 python -m garmin_fit.cli run
 ```
 
-**6.** Connect your Garmin watch and copy files from `Output_fit/`:
+**5.** Connect your Garmin watch and copy files from `Output_fit/`:
 
 - Copy `.fit` files to the **`/GARMIN/New files`** folder on the watch
 - The watch will process the files automatically — they will appear in **`/GARMIN/Workouts`**
@@ -166,7 +166,7 @@ pip install -r requirements.txt
 Plan/plan.md   or   Plan/plan.txt
 ```
 
-**4.** Generate YAML via LLM (LM Studio):
+**3.** Generate YAML via LLM (LM Studio):
 ```bash
 python -m garmin_fit.llm.request_cli --api openai --url http://127.0.0.1:1234/v1 --openai-mode completions
 ```
@@ -178,12 +178,12 @@ python -m garmin_fit.llm.request_cli --api openai --url http://127.0.0.1:1234/v1
 
 Or write the YAML manually using `docs/YAML_GUIDE.md` as a reference.
 
-**5.** Build FIT files:
+**4.** Build FIT files:
 ```bash
 python -m garmin_fit.cli run
 ```
 
-**6.** Copy to your Garmin watch:
+**5.** Copy to your Garmin watch:
 
 Files will appear in `Output_fit/`.
 
