@@ -8,14 +8,14 @@ See `version.txt` for project version history.
 text/md → LLM → YAML (Plan/) → direct FIT build → validation → archive
 ```
 
-Run: `python get_fit.py` (full workflow) or `python run.py` (interactive menu).
+Run: `python -m garmin_fit.cli run` (full workflow) or `python -m garmin_fit.runner` (interactive menu).
 
 ## Two build paths — BOTH must stay in sync
 
 | Path | Script | Used by |
 |------|--------|---------|
-| **Direct** (default) | `Scripts/build_from_plan.py` | `workflow_full`, Telegram bot |
-| **Legacy/debug** | `Scripts/generate_from_yaml.py` + `Scripts/build_fits.py` | `--templates-only` / `--build-only` |
+| **Direct** (default) | `src/garmin_fit/build_from_plan.py` | `workflow_full`, Telegram bot |
+| **Legacy/debug** | `src/garmin_fit/generate_from_yaml.py` + `src/garmin_fit/build_fits.py` | `--templates-only` / `--build-only` |
 
 When adding new step types or fixing step generation logic, update **both** builders.
 

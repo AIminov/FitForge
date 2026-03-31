@@ -4,8 +4,7 @@
 from __future__ import annotations
 
 import argparse
-import subprocess
-import sys
+import importlib
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -15,9 +14,9 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def run_module(module: str, args: list[str]) -> int:
-    cmd = [sys.executable, "-m", module, *args]
-    print("\nRunning:", " ".join(cmd), "\n")
-    return subprocess.run(cmd).returncode
+    print(f"\n>> {module} {' '.join(args)}\n")
+    mod = importlib.import_module(module)
+    return mod.main(args) or 0
 
 
 def ask_mode() -> str:

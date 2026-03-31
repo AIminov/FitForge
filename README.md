@@ -232,9 +232,9 @@ python -m garmin_fit.legacy_cli compare --plan Plan/plan.yaml
 ### Other
 
 ```bash
-python run.py                        # Interactive menu
+python -m garmin_fit.runner          # Interactive menu
 python -m garmin_fit.bot             # Telegram bot
-python validate_yaml.py              # Quick validation
+python -m garmin_fit.cli validate-yaml --plan Plan/plan.yaml  # Quick validation
 ```
 
 ---

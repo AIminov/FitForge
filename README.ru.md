@@ -136,7 +136,7 @@ python -m garmin_fit.cli run
 
 Или напрямую с указанием файла:
 ```bash
-python get_fit.py --plan Plan/my_plan.yaml
+python -m garmin_fit.cli run --plan Plan/my_plan.yaml
 ```
 
 **6.** Скопируйте файлы из `Output_fit/` на часы:
@@ -230,9 +230,9 @@ python -m garmin_fit.legacy_cli compare --plan Plan/plan.yaml
 ### Прочее
 
 ```bash
-python run.py                        # Интерактивное меню
+python -m garmin_fit.runner          # Интерактивное меню
 python -m garmin_fit.bot             # Telegram-бот
-python validate_yaml.py              # Быстрая валидация
+python -m garmin_fit.cli validate-yaml --plan Plan/plan.yaml  # Быстрая валидация
 ```
 
 ---
