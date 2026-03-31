@@ -6,10 +6,10 @@ Includes normalization, repair, structured validation, and retry feedback.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from datetime import date
 import logging
 import re
+from dataclasses import dataclass, field
+from datetime import date
 from typing import Any, Optional
 
 import yaml
@@ -164,12 +164,12 @@ class UnifiedLLMClient:
             workouts_hint: Override for expected workout count when auto-detection
                 returns 0. Has no effect if the plan text already yields a count.
         """
-        from .prompt import get_system_prompt
         from ..plan_processing import normalize_source_text, repair_plan_data
         from ..plan_validator import (
             group_issues_by_category,
             validate_plan_data_detailed,
         )
+        from .prompt import get_system_prompt
 
         analysis = normalize_source_text(plan_text)
         if workouts_hint > 0 and analysis.expected_workouts == 0:

@@ -25,6 +25,7 @@ from telegram.ext import (
 )
 
 from .archive_manager import archive_current_plan, get_archive_name
+from .config import ARCHIVE_DIR, ARTIFACTS_DIR, BOT_CONFIG_FILE, OUTPUT_DIR, PLAN_DIR, TEMPLATES_DIR
 from .generate_from_yaml import generate_all_templates
 from .llm.client import UnifiedLLMClient
 from .pipeline_runner import run_pipeline, save_yaml_to_plan_dir
@@ -35,7 +36,6 @@ from .plan_service import (
     format_plan_preview,
     has_default_sbu_block,
 )
-from .config import TEMPLATES_DIR, PLAN_DIR, OUTPUT_DIR, ARCHIVE_DIR, ARTIFACTS_DIR, BOT_CONFIG_FILE
 
 # Rate limiting constants
 REQUEST_COOLDOWN_SEC = 30

@@ -4,8 +4,8 @@ Build FIT workout files directly from YAML/domain objects.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 import logging
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
 
@@ -27,13 +27,12 @@ from .workout_utils import (
     dist_open,
     dist_pace,
     open_step,
+    repeat_step,
     save_workout,
     time_hr,
     time_pace,
     time_step,
-    repeat_step,
 )
-
 
 logger = logging.getLogger(__name__)
 

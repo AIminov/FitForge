@@ -10,7 +10,6 @@ import Scripts.orchestrator as orch
 import Scripts.plan_artifacts as plan_artifacts
 import Scripts.state_manager as state_manager
 
-
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
 
 

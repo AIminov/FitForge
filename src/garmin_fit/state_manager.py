@@ -8,9 +8,8 @@ Garmin device deduplication issues.
 import json
 import os
 import sys
-from pathlib import Path
-from datetime import datetime, timezone, timedelta
 from contextlib import contextmanager
+from datetime import datetime, timedelta, timezone
 
 if sys.platform == "win32":
     import msvcrt
@@ -18,9 +17,9 @@ else:
     import fcntl
 
 try:
-    from .config import STATE_FILE, FIT_EPOCH
+    from .config import FIT_EPOCH, STATE_FILE
 except ImportError:
-    from config import STATE_FILE, FIT_EPOCH
+    from config import FIT_EPOCH, STATE_FILE
 
 LOCK_FILE = STATE_FILE.with_suffix(".lock")
 

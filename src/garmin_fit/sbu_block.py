@@ -14,11 +14,8 @@ Default drills (used when no custom drills provided):
 Total default steps: (2+2+2+2+4) × 2 = 24 steps.
 """
 
-from .workout_utils import time_step, open_step, sec_to_time, Intensity
-from fit_tool.profile.messages.workout_step_message import WorkoutStepMessage
-from fit_tool.profile.profile_type import (
-    WorkoutStepDuration, WorkoutStepTarget,
-)
+
+from .workout_utils import Intensity, open_step, time_step
 
 ACT = Intensity.ACTIVE
 REC = Intensity.RECOVERY

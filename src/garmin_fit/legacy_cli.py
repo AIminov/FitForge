@@ -3,13 +3,12 @@ from __future__ import annotations
 import argparse
 from typing import Sequence
 
+from ._shared_cli import configure_logging, generate_run_id
 from .workflow import (
     workflow_build_only,
     workflow_compare_build_modes,
     workflow_templates_only,
 )
-
-from ._shared_cli import configure_logging, generate_run_id
 
 
 def build_parser() -> argparse.ArgumentParser:

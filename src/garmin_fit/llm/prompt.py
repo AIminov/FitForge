@@ -241,12 +241,80 @@ def render_llm_contract(
     return "\n".join(lines)
 
 
+def _build_json_schema_section() -> str:
+    """
+    Generate a compact JSON Schema section from Pydantic models.
+    Derived programmatically — always in sync with plan_schema.py.
+    """
+    try:
+
+        from ..plan_schema import WorkoutPlanSchema
+
+        schema = WorkoutPlanSchema.model_json_schema()
+        defs = schema.get("$defs", {})
+
+        lines = ["MACHINE-READABLE STEP SCHEMA"]
+        step_models = [
+            "DistHrStep", "TimeHrStep", "DistPaceStep", "TimePaceStep",
+            "DistOpenStep", "TimeStepStep", "OpenStep", "RepeatStep", "SbuBlockStep",
+        ]
+        for model_name in step_models:
+            model_def = defs.get(model_name, {})
+            props = model_def.get("properties", {})
+            required = set(model_def.get("required", []))
+            type_val = props.get("type", {}).get("const", "?")
+            fields = []
+            for field_name, field_info in props.items():
+                if field_name == "type":
+                    continue
+                # Resolve type from anyOf (optional fields) or direct type
+                any_of = field_info.get("anyOf", [])
+                if any_of:
+                    ftype = next(
+                        (x.get("type", "") for x in any_of if x.get("type") != "null"),
+                        "any",
+                    )
+                else:
+                    ftype = field_info.get("type", "any")
+                marker = "req" if field_name in required else "opt"
+                fields.append(f"{field_name}({marker}:{ftype})")
+            lines.append(f"- {type_val}: {', '.join(fields)}")
+        return "\n".join(lines)
+    except Exception:
+        return ""
+
+
+def get_plan_json_schema() -> dict[str, Any]:
+    """
+    Return the full JSON Schema for a workout plan (generated from Pydantic models).
+
+    Useful for embedding in ChatGPT / Claude prompts when generating YAML manually:
+
+        import json
+        from garmin_fit.llm.prompt import get_plan_json_schema
+        print(json.dumps(get_plan_json_schema(), indent=2))
+    """
+    from ..plan_schema import WorkoutPlanSchema
+
+    return WorkoutPlanSchema.model_json_schema()
+
+
 def create_system_prompt(
     include_text_variations: bool = False,
     user_profile: Optional[dict[str, Any]] = None,
     source_text: str | None = None,
+    include_json_schema: bool = False,
 ) -> str:
-    """Create the strict LLM system prompt."""
+    """Create the strict LLM system prompt.
+
+    Args:
+        include_text_variations: Include text variation examples.
+        user_profile: User HR zone profile (optional).
+        source_text: Source plan text for targeted example selection.
+        include_json_schema: Inject a compact machine-readable schema section
+            derived from Pydantic models. Recommended for capable models
+            (GPT-4, Claude). Disable for small local LLMs to save context.
+    """
     contract = load_llm_contract()
     contract_block = render_llm_contract(contract, user_profile=user_profile)
     examples = load_strict_examples(
@@ -260,6 +328,11 @@ def create_system_prompt(
         "Return only YAML. No reasoning. No markdown.",
         contract_block,
     ]
+
+    if include_json_schema:
+        schema_section = _build_json_schema_section()
+        if schema_section:
+            sections.append(schema_section)
     if examples:
         sections.append(examples)
     sections.append(
@@ -303,8 +376,16 @@ def create_system_prompt(
 def get_system_prompt(
     include_text_variations: bool = False,
     source_text: str | None = None,
+    include_json_schema: bool = False,
 ) -> str:
-    """Create the strict system prompt, loading user HR zones if available."""
+    """Create the strict system prompt, loading user HR zones if available.
+
+    Args:
+        include_text_variations: Include text variation examples.
+        source_text: Source plan text for targeted example selection.
+        include_json_schema: Inject compact Pydantic-derived schema section.
+            Recommended for GPT-4 / Claude. Off by default for local LLMs.
+    """
     profile = None
     try:
         from ..workout_utils import load_user_profile
@@ -317,6 +398,7 @@ def get_system_prompt(
         include_text_variations=include_text_variations,
         user_profile=profile,
         source_text=source_text,
+        include_json_schema=include_json_schema,
     )
 
 

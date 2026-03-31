@@ -16,11 +16,11 @@ from datetime import datetime, timezone
 from uuid import uuid4
 
 from garmin_fit.workflow import (
-    workflow_compare_build_modes,
     setup_file_logging,
-    workflow_doctor,
     workflow_archive,
     workflow_build_only,
+    workflow_compare_build_modes,
+    workflow_doctor,
     workflow_full,
     workflow_list_archives,
     workflow_restore,

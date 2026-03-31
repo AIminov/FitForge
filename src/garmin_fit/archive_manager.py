@@ -4,24 +4,24 @@ Archive management for completed training plans.
 Moves completed workouts and plans to archive, keeping main directories clean.
 """
 
-import shutil
-from datetime import datetime
 import logging
 import re
+import shutil
+from datetime import datetime
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-from .config import (
+from .config import (  # noqa: E402
+    ARCHIVE_DIR,
     ARTIFACTS_DIR,
+    OUTPUT_DIR,
     PLAN_DIR,
     PLAN_DONE_DIR,
     TEMPLATES_DIR,
-    OUTPUT_DIR,
-    ARCHIVE_DIR,
 )
-from .generate_from_yaml import generate_all_templates
-from .plan_artifacts import get_plan_artifact_paths
+from .generate_from_yaml import generate_all_templates  # noqa: E402
+from .plan_artifacts import get_plan_artifact_paths  # noqa: E402
 
 
 def _pick_active_plan_stem():
@@ -455,8 +455,8 @@ def print_archives():
 
 
 if __name__ == "__main__":
-    import sys
     import argparse
+    import sys
 
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 

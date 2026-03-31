@@ -1,9 +1,9 @@
-import unittest
-from types import SimpleNamespace
 import tempfile
+import unittest
+from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
 from zipfile import ZipFile
-from pathlib import Path
 
 try:
     import Scripts.telegram_bot as telegram_bot

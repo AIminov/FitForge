@@ -7,8 +7,8 @@ Loaded automatically by Python if present on sys.path.
 from __future__ import annotations
 
 import os
-from pathlib import Path
 import tempfile
+from pathlib import Path
 
 
 def _is_writable(directory: Path) -> bool:

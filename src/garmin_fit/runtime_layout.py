@@ -9,7 +9,6 @@ from pathlib import Path
 
 from .config import PROJECT_ROOT
 
-
 logger = logging.getLogger(__name__)
 
 MUTABLE_DIRECTORIES = [

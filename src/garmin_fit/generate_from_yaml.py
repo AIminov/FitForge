@@ -9,8 +9,8 @@ Usage:
     python -m Scripts.generate_from_yaml Plan/marathon_workouts.yaml
 """
 
-import sys
 import logging
+import sys
 from pathlib import Path
 
 try:
@@ -24,7 +24,6 @@ from .logging_utils import setup_file_logging
 from .plan_domain import KNOWN_PACE_CONSTANTS, drill_to_data, plan_from_data
 from .plan_processing import repair_plan_data, sanitize_workout_name
 from .plan_validator import validate_plan_data
-
 
 logger = logging.getLogger(__name__)
 
@@ -530,7 +529,7 @@ if __name__ == "__main__":
     try:
         generated, total = generate_all_templates(yaml_path)
         if total > 0 and generated == total:
-            logger.info(f"\nNext step: python get_fit.py --build-only")
+            logger.info("\nNext step: python get_fit.py --build-only")
             sys.exit(0)
         else:
             sys.exit(1)

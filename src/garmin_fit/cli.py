@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 from typing import Sequence
 
+from ._shared_cli import configure_logging, generate_run_id
 from .workflow import (
     workflow_archive,
     workflow_doctor,
@@ -12,8 +13,6 @@ from .workflow import (
     workflow_validate_only,
     workflow_validate_yaml,
 )
-
-from ._shared_cli import configure_logging, generate_run_id
 
 
 def build_parser() -> argparse.ArgumentParser:

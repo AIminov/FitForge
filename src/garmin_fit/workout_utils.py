@@ -10,10 +10,14 @@ from fit_tool.profile.messages.file_id_message import FileIdMessage
 from fit_tool.profile.messages.workout_message import WorkoutMessage
 from fit_tool.profile.messages.workout_step_message import WorkoutStepMessage
 from fit_tool.profile.profile_type import (
-    FileType, Manufacturer, Sport, SubSport,
-    Intensity, WorkoutStepDuration, WorkoutStepTarget,
+    FileType,
+    Intensity,
+    Manufacturer,
+    Sport,
+    SubSport,
+    WorkoutStepDuration,
+    WorkoutStepTarget,
 )
-
 
 # ============================================================================
 # Conversion Functions
@@ -134,6 +138,7 @@ def load_hr_zones():
         FileNotFoundError: If user_profile.yaml doesn't exist
     """
     import yaml
+
     from .config import USER_PROFILE
 
     if not USER_PROFILE.exists():
@@ -154,6 +159,7 @@ def load_user_profile():
         dict: Full user profile including max_hr, resting_hr, hr_zones
     """
     import yaml
+
     from .config import USER_PROFILE
 
     if not USER_PROFILE.exists():

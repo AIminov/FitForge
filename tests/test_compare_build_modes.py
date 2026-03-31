@@ -6,7 +6,6 @@ from unittest.mock import patch
 
 import Scripts.compare_build_modes as compare_build_modes
 
-
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
 
 

@@ -3,9 +3,8 @@ from __future__ import annotations
 import argparse
 from typing import Sequence
 
-from .workflow import workflow_validate_yaml
-
 from ._shared_cli import configure_logging
+from .workflow import workflow_validate_yaml
 
 
 def build_parser() -> argparse.ArgumentParser:

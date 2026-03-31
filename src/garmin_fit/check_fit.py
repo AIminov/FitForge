@@ -11,11 +11,11 @@ Validates FIT workout files and performs quality checks:
 - Steps have valid structure
 """
 
-import sys
-from pathlib import Path
 import logging
 import os
 import subprocess
+import sys
+from pathlib import Path
 
 try:
     from .config import OUTPUT_DIR, ROOT

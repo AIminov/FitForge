@@ -49,12 +49,18 @@ asyncio_mode = "auto"
 [tool.ruff]
 line-length = 100
 target-version = "py313"
+exclude = ["sdk/", "examples/"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I"]
-ignore = ["E501"]
+# W191/W29x: whole codebase uses tabs — pre-existing style, not changing
+ignore = ["E501", "W191", "W291", "W292", "W293"]
+
+[tool.ruff.lint.per-file-ignores]
+# Scripts/ and garmin_fit/ are compatibility shims — intentional re-exports
+"Scripts/*" = ["F401", "E402", "I001", "F541"]
+"garmin_fit/*" = ["F401", "I001"]
 
 [tool.setuptools.package-data]
 "Scripts.llm" = ["*.yaml", "*.txt"]
-"src.garmin_fit.llm" = ["*.yaml", "*.txt"]
 "src.garmin_fit.llm" = ["*.yaml", "*.txt"]

@@ -14,7 +14,6 @@ import yaml
 
 from .plan_domain import ALLOWED_INTENSITY, KNOWN_PACE_CONSTANTS, STEP_REQUIRED_FIELDS
 
-
 # ---------------------------------------------------------------------------
 # Pydantic structural validation (optional — gracefully skipped if unavailable)
 # ---------------------------------------------------------------------------

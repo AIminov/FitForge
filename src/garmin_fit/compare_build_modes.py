@@ -4,25 +4,21 @@ Compare direct FIT build output with the legacy templates-based path.
 
 from __future__ import annotations
 
-from contextlib import ExitStack
-from datetime import datetime, timezone
 import json
 import logging
+from contextlib import ExitStack
+from datetime import datetime, timezone
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import Any
 from unittest.mock import patch
 
-from . import build_fits
-from . import build_from_plan
-from . import generate_from_yaml
+from . import build_fits, build_from_plan, generate_from_yaml, state_manager
 from . import orchestrator as orchestrator_module
 from . import plan_artifacts as plan_artifacts_module
-from . import state_manager
 from .check_fit import validate_fit_file
 from .logging_utils import setup_file_logging as _setup_logging
 from .plan_artifacts import get_build_mode_compare_path
-
 
 logger = logging.getLogger(__name__)
 

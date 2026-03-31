@@ -5,17 +5,15 @@ Reads workout template Python files, executes them to get workout steps,
 and generates FIT files with unique file_id values.
 """
 
-import sys
 import importlib.util
-from pathlib import Path
 import logging
 import subprocess
+import sys
 
-from .config import TEMPLATES_DIR, OUTPUT_DIR, LOGS_DIR, FITCSV_JAR
+from .config import FITCSV_JAR, LOGS_DIR, OUTPUT_DIR, TEMPLATES_DIR
 from .logging_utils import setup_file_logging as _setup_logging
 from .state_manager import fit_timestamp_to_unix_ms, get_next_serial_timestamp, print_state
 from .workout_utils import save_workout
-
 
 # Setup logging
 logging.basicConfig(
@@ -193,10 +191,10 @@ def build_all_fits(verify_with_csv=False):
 
             if verify_with_csv:
                 if verify_fit_with_csv_tool(fit_path):
-                    logger.debug(f"    CSV verification: OK")
+                    logger.debug("    CSV verification: OK")
                     success_count += 1
                 else:
-                    logger.warning(f"    CSV verification: FAILED")
+                    logger.warning("    CSV verification: FAILED")
             else:
                 success_count += 1
 

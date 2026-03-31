@@ -4,15 +4,14 @@ Normalization and repair helpers for plan text and YAML data.
 
 from __future__ import annotations
 
+import re
+import unicodedata
 from copy import deepcopy
 from dataclasses import dataclass, field
 from datetime import date
-import re
-import unicodedata
 from typing import Any
 
 from .plan_domain import INTENSITY_ALIASES, INTENSITY_DEFAULTS, STEP_TYPE_ALIASES
-
 
 FILENAME_SAFE_RE = re.compile(r"[^\w.-]+", re.UNICODE)
 

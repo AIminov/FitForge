@@ -7,15 +7,14 @@ This module contains business workflow logic separate from CLI parsing.
 import logging
 import subprocess
 import sys
-from pathlib import Path
 import tempfile
+from pathlib import Path
 from time import perf_counter
 
-from .config import PLAN_DIR, TEMPLATES_DIR, SCRIPTS_DIR, OUTPUT_DIR, ROOT
 from .compare_build_modes import compare_build_modes
+from .config import OUTPUT_DIR, PLAN_DIR, ROOT, SCRIPTS_DIR, TEMPLATES_DIR
 from .logging_utils import setup_file_logging as _setup_file_logging
 from .orchestrator import run_generation_pipeline, select_active_yaml
-
 
 logger = logging.getLogger(__name__)
 
@@ -480,7 +479,7 @@ def workflow_validate_yaml(plan_path=None):
     Returns:
         Exit code (0 = success, 1 = validation errors)
     """
-    from .plan_validator import parse_and_validate_yaml_text_detailed, group_issues_by_category
+    from .plan_validator import group_issues_by_category, parse_and_validate_yaml_text_detailed
 
     print_header("YAML VALIDATION (SDK RULES)")
 
@@ -526,7 +525,7 @@ def workflow_validate_yaml(plan_path=None):
                 logger.error(f"  - {issue.message}")
         return 1
 
-    logger.info(f"[OK] YAML parsing successful")
+    logger.info("[OK] YAML parsing successful")
     workouts = data.get('workouts', [])
     logger.info(f"Found {len(workouts)} workouts")
     logger.info("")
