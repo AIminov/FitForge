@@ -97,7 +97,16 @@ python -m garmin_fit.cli run
 ```
 
 **6.** Подключите часы к компьютеру и скопируйте файлы из `Output_fit/` /
-Connect your Garmin watch and copy files from `Output_fit/`.
+Connect your Garmin watch and copy files from `Output_fit/`:
+
+- Скопируйте `.fit`-файлы в папку **`/GARMIN/New files`** на часах
+- Copy `.fit` files to the **`/GARMIN/New files`** folder on the watch
+- Часы обработают файлы автоматически — они появятся в **`/GARMIN/Workouts`**
+- The watch will process the files automatically — they will appear in **`/GARMIN/Workouts`**
+
+На часах / On the watch:
+выберите любой беговой режим → **Training → Workouts** → выберите нужную тренировку.
+select any running mode → **Training → Workouts** → choose the desired workout.
 
 ---
 
@@ -154,7 +163,16 @@ python get_fit.py --plan Plan/my_plan.yaml
 ```
 
 **6.** Скопируйте файлы из `Output_fit/` на часы /
-Copy files from `Output_fit/` to your watch.
+Copy files from `Output_fit/` to your watch:
+
+- Скопируйте `.fit`-файлы в папку **`/GARMIN/New files`** на часах
+- Copy `.fit` files to the **`/GARMIN/New files`** folder on the watch
+- Часы обработают файлы автоматически — они появятся в **`/GARMIN/Workouts`**
+- The watch will process the files automatically — they will appear in **`/GARMIN/Workouts`**
+
+На часах / On the watch:
+выберите любой беговой режим → **Training → Workouts** → выберите нужную тренировку.
+select any running mode → **Training → Workouts** → choose the desired workout.
 
 > **Совет / Tip:** Если YAML написан Claude или ChatGPT и не прошёл валидацию —
 > покажи ошибки модели и попроси исправить. Обычно хватает одной итерации.
