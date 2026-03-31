@@ -193,24 +193,15 @@ python get_fit.py --templates-only
 
 Старые ключи конфигурации (`ollama_model`, `ollama_url`) поддерживаются для обратной совместимости и автоматически маппятся на новые (`llm_model`, `llm_url`).
 
-## Preferred Bot Command
 
-Use:
+## Запуск (предпочтительный способ)
 
-`powershell
+```powershell
 python -m garmin_fit.bot
-`
+```
 
-python -m Scripts.telegram_bot remains available only for backward compatibility.
+Совместимый способ (для обратной совместимости):
 
-
-## Compatibility Note
-
-Preferred bot entry point:
-
-`powershell
-python -m garmin_fit.bot
-`
-
-Compatibility entry points like python -m Scripts.telegram_bot are retained only to avoid breaking older local workflows.
-
+```powershell
+python -m Scripts.telegram_bot
+```

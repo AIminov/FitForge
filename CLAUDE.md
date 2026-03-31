@@ -50,12 +50,6 @@ Each drill expands to `reps × 2` FIT steps (active + open recovery).
 ISO weeks (Monday start): `date.isocalendar()[1]`
 Filename pattern: `W{iso_week}_{MM-DD}_{Day}_{Type}_{Details}`
 
-## User profile
-
-- max_hr: 189, resting_hr: 50
-- HR zones: Z1=104–132, Z2=132–151, Z3=151–162, Z4=162–172, Z5=172–189
-- SBU drill names in Russian: Высок.Бедро, Захлёст, Прям.Ноги, Многоскоки
-
 ## Architecture (src/garmin_fit is canonical)
 
 ```

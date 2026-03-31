@@ -1,10 +1,10 @@
 # LLM Connection Profile
 
-Актуально на **2026-03-04**.
+Документ описывает параметры подключения к локальной LLM для генерации YAML.
 
-Документ фиксирует рабочие параметры подключения к локальной модели для генерации YAML.
+> Значения ниже — **пример рабочей конфигурации**. Замените model, url и порт под вашу установку.
 
-## Текущий рабочий профиль (рекомендованный)
+## Пример рабочего профиля
 
 - Provider: `LM Studio` (OpenAI-compatible API)
 - URL: `http://127.0.0.1:1234/v1`
@@ -88,11 +88,11 @@ Checks:
 
 Preferred commands:
 
-`ash
+```bash
 python -m garmin_fit.llm.request_cli --api openai --url http://127.0.0.1:1234/v1 --model qwen/qwen3.5-9b --openai-mode completions --timeout-sec 1800 --retries 3
 python -m garmin_fit.llm.benchmark --suite tests/fixtures/llm_benchmark/plan_week_2026_03_02.yaml --mode generate --api openai --url http://127.0.0.1:1234/v1 --model qwen/qwen3.5-9b --openai-mode completions --timeout-sec 1800
 python -m garmin_fit.cli doctor --llm --api openai --url http://127.0.0.1:1234/v1 --model qwen/qwen3.5-9b --openai-mode completions --timeout-sec 120
-`
+```
 
 Scripts.* commands remain available for backward compatibility, but they are no longer the primary interface.
 
